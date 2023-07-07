@@ -50,10 +50,24 @@ body {
     padding: 7px;
 }
 
+
+
 .buttons .add {
-    background-color: rgb(62, 230, 53);
+    background-color: rgb(94, 234, 87);
+    transition: transform 0.1s;
+}
+
+.buttons .add:active {
+    background-color: rgb(13, 254, 0);
+    transform: scale(0.9);
 }
 
 .buttons .remove {
+    background-color: rgba(244, 14, 14, 0.773);
+    transition: transform 0.1s;
+}
+
+.buttons .remove:active {
     background-color: red;
+    transform: scale(0.9);
 }

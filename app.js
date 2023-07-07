@@ -6,10 +6,6 @@ tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
 
 
-let vipPosts = 0;
-let posts = 0;
-let stories = 0;
-// let total = 0;
 
 items = []
 
@@ -41,7 +37,6 @@ function countTotalPrise() {
 add1.addEventListener("click", function () {
     items.push({ key: "vipPost", value: 50000 })
     let total = countTotalPrise()
-    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`);
     tg.MainButton.show();
     check()
@@ -53,7 +48,6 @@ remove1.addEventListener("click", function () {
         items.splice(index, 1)
     }
     let total = countTotalPrise()
-    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
     check()
@@ -63,7 +57,6 @@ remove1.addEventListener("click", function () {
 add2.addEventListener("click", function () {
     items.push({ key: "post", value: 18000 })
     let total = countTotalPrise()
-    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
     check()
@@ -75,7 +68,6 @@ remove2.addEventListener("click", function () {
         items.splice(index, 1)
     }
     let total = countTotalPrise()
-    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
     check()
@@ -84,7 +76,6 @@ remove2.addEventListener("click", function () {
 add3.addEventListener("click", function () {
     items.push({ key: "stories", value: 10000 })
     let total = countTotalPrise()
-    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
     check()
@@ -96,15 +87,14 @@ remove3.addEventListener("click", function () {
         items.splice(index, 1)
     }
     let total = countTotalPrise()
-    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
     check()
 })
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    tg.sendData(vipPosts, posts, stories, total)
-})
+    tg.sendData(items)
+});
 
 
 
