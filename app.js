@@ -9,7 +9,9 @@ tg.MainButton.color = '#2cab37';
 let vipPosts = 0;
 let posts = 0;
 let stories = 0;
-let total = 0;
+// let total = 0;
+
+items = []
 
 let add1 = document.getElementById('add1')
 let remove1 = document.getElementById('remove1')
@@ -22,30 +24,34 @@ let remove3 = document.getElementById('remove3')
 
 
 function check() {
-    if (total == 0) {
+    if (items == []) {
         tg.MainButton.hide()
     }
 }
 
-add1.addEventListener("click", function () {
+function countTotalPrise() {
+    let total = 0
+    items.forEach(item => {
+        total = total + item.value
+    });
+    return total
+}
 
-    total = total + 50000
-    vipPosts = vipPosts + 1
-    console.log(total);
+add1.addEventListener("click", function () {
+    items.push({ key: "vipPost", value: 50000 })
+    let total = countTotalPrise()
+    console.log(total)
     tg.MainButton.setText(`Всего: ${total}`);
     tg.MainButton.show();
     check()
 })
 
 remove1.addEventListener("click", function () {
-    total = total - 50000
-    if (total <= 0) {
-        total = 0
+    let index = items.findIndex(obj => obj.key === 'vipPost')
+    if (index !== -1) {
+        items.splice(index, 1)
     }
-    vipPosts = vipPosts - 1
-    if (vipPosts <= 0) {
-        vipPosts = 0
-    }
+    let total = countTotalPrise()
     console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
@@ -54,8 +60,8 @@ remove1.addEventListener("click", function () {
 
 
 add2.addEventListener("click", function () {
-    total = total + 18000
-    posts = posts + 1
+    items.push({ key: "post", value: 18000 })
+    let total = countTotalPrise()
     console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
@@ -63,14 +69,11 @@ add2.addEventListener("click", function () {
 })
 
 remove2.addEventListener("click", function () {
-    total = total - 18000
-    if (total <= 0) {
-        total = 0
+    let index = items.findIndex(obj => obj.key === 'post')
+    if (index !== -1) {
+        items.splice(index, 1)
     }
-    posts = posts + 1
-    if (posts <= 0) {
-        posts = 0
-    }
+    let total = countTotalPrise()
     console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
@@ -78,8 +81,8 @@ remove2.addEventListener("click", function () {
 })
 
 add3.addEventListener("click", function () {
-    total = total + 10000
-    stories = stories + 1
+    items.push({ key: "stories", value: 10000 })
+    let total = countTotalPrise()
     console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
@@ -87,14 +90,11 @@ add3.addEventListener("click", function () {
 })
 
 remove3.addEventListener("click", function () {
-    total = total - 10000
-    if (total <= 0) {
-        total = 0
+    let index = items.findIndex(obj => obj.key === 'stories')
+    if (index !== -1) {
+        items.splice(index, 1)
     }
-    stories = stories - 1
-    if (stories <= 0) {
-        stories = 0
-    }
+    let total = countTotalPrise()
     console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
