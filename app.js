@@ -21,6 +21,12 @@ let add3 = document.getElementById('add3')
 let remove3 = document.getElementById('remove3')
 
 
+function check() {
+    if (total == 0) {
+        tg.MainButton.hide()
+    }
+}
+
 add1.addEventListener("click", function () {
 
     total = total + 50000
@@ -28,7 +34,7 @@ add1.addEventListener("click", function () {
     console.log(total);
     tg.MainButton.setText(`Всего: ${total}`);
     tg.MainButton.show();
-
+    check()
 })
 
 remove1.addEventListener("click", function () {
@@ -43,68 +49,56 @@ remove1.addEventListener("click", function () {
     console.log(total)
     tg.MainButton.setText(`Всего: ${total}`)
     tg.MainButton.show();
-
+    check()
 })
 
 
 add2.addEventListener("click", function () {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide();
-    } else {
-        total = total + 18000
-        posts = posts + 1
-        console.log(total)
-        tg.MainButton.setText(`Всего: ${total}`)
-        tg.MainButton.show();
-    }
+    total = total + 18000
+    posts = posts + 1
+    console.log(total)
+    tg.MainButton.setText(`Всего: ${total}`)
+    tg.MainButton.show();
+    check()
 })
 
 remove2.addEventListener("click", function () {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide();
-    } else {
-        total = total - 18000
-        if (total <= 0) {
-            total = 0
-        }
-        posts = posts + 1
-        if (posts <= 0) {
-            posts = 0
-        }
-        console.log(total)
-        tg.MainButton.setText(`Всего: ${total}`)
-        tg.MainButton.show();
+    total = total - 18000
+    if (total <= 0) {
+        total = 0
     }
+    posts = posts + 1
+    if (posts <= 0) {
+        posts = 0
+    }
+    console.log(total)
+    tg.MainButton.setText(`Всего: ${total}`)
+    tg.MainButton.show();
+    check()
 })
 
 add3.addEventListener("click", function () {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide();
-    } else {
-        total = total + 10000
-        stories = stories + 1
-        console.log(total)
-        tg.MainButton.setText(`Всего: ${total}`)
-        tg.MainButton.show();
-    }
+    total = total + 10000
+    stories = stories + 1
+    console.log(total)
+    tg.MainButton.setText(`Всего: ${total}`)
+    tg.MainButton.show();
+    check()
 })
 
 remove3.addEventListener("click", function () {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide();
-    } else {
-        total = total - 10000
-        if (total <= 0) {
-            total = 0
-        }
-        stories = stories - 1
-        if (stories <= 0) {
-            stories = 0
-        }
-        console.log(total)
-        tg.MainButton.setText(`Всего: ${total}`)
-        tg.MainButton.show();
+    total = total - 10000
+    if (total <= 0) {
+        total = 0
     }
+    stories = stories - 1
+    if (stories <= 0) {
+        stories = 0
+    }
+    console.log(total)
+    tg.MainButton.setText(`Всего: ${total}`)
+    tg.MainButton.show();
+    check()
 })
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
