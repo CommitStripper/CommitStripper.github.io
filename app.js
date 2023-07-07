@@ -24,7 +24,8 @@ let remove3 = document.getElementById('remove3')
 
 
 function check() {
-    if (items == []) {
+    let total = countTotalPrise()
+    if (total == 0) {
         tg.MainButton.hide()
     }
 }
