@@ -22,33 +22,28 @@ let remove3 = document.getElementById('remove3')
 
 
 add1.addEventListener("click", function () {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide();
-    } else {
-        total = total + 50000
-        vipPosts = vipPosts + 1
-        console.log(total);
-        tg.MainButton.setText(`Всего: ${total}`);
-        tg.MainButton.show();
-    }
+
+    total = total + 50000
+    vipPosts = vipPosts + 1
+    console.log(total);
+    tg.MainButton.setText(`Всего: ${total}`);
+    tg.MainButton.show();
+
 })
 
 remove1.addEventListener("click", function () {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide();
-    } else {
-        total = total - 50000
-        if (total <= 0) {
-            total = 0
-        }
-        vipPosts = vipPosts - 1
-        if (vipPosts <= 0) {
-            vipPosts = 0
-        }
-        console.log(total)
-        tg.MainButton.setText(`Всего: ${total}`)
-        tg.MainButton.show();
+    total = total - 50000
+    if (total <= 0) {
+        total = 0
     }
+    vipPosts = vipPosts - 1
+    if (vipPosts <= 0) {
+        vipPosts = 0
+    }
+    console.log(total)
+    tg.MainButton.setText(`Всего: ${total}`)
+    tg.MainButton.show();
+
 })
 
 
